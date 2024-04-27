@@ -1,0 +1,3 @@
+Description=Configuring cluster...
+ExecStart=$PM_LIBRARY/cluster-config/configure.sh
+Requires=cluster-config/token.cluster-config

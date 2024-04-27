@@ -1,0 +1,2 @@
+Description="Building sfnas..."
+ExecStart=$PM_LIBRARY/sfnas/build.sh

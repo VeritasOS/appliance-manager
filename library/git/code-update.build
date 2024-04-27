@@ -1,0 +1,3 @@
+Description="Updating current branch..."
+ExecStart=$PM_LIBRARY/git/pull.sh
+RequiredBy=sfnas/make.build

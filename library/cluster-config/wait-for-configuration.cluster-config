@@ -1,0 +1,3 @@
+Description=Waiting for cluster configuration to complete...
+ExecStart=$PM_LIBRARY/cluster-config/wait-for-configuration.sh
+Requires=cluster-config/configure.cluster-config
