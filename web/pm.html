@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appliance Manager</title>
+  <link href="web/css/bootstrap-5.3.3.min.css" rel="stylesheet">
+  <script src="web/js/htmx-1.9.12.min.js"></script>
+  <script src="web/js/split-grid-1.0.11.js"></script>
+  <script src="web/js/pm.js"></script>
+  <style>
+    body {
+      font-family: Arial;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-rows: 1fr 10px 1fr;
+      grid-template-columns: 1fr 10px 1fr;
+    }
+
+    .gutter-col {
+      grid-row: 1/-1;
+      cursor: col-resize;
+    }
+
+    .gutter-col-1 {
+      grid-column: 2;
+    }
+
+    .gutter-row {
+      grid-column: 1/-1;
+      cursor: row-resize;
+    }
+
+    .gutter-row-1 {
+      grid-row: 2;
+    }
+
+    /* Fade in tabs */
+    @-webkit-keyframes fadeEffect {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeEffect {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    td,
+    th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+
+    tr:nth-child(even) {
+      background-color: #D6EEEE;
+    }
+  </style>
+</head>
+
+<body class="container-fluid pt-3">
+  <header style="border-bottom: 1px solid #000;">
+    <img style="margin-right: 10%;"
+      src="data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='184.232' height='36.152'%3e%3cpath data-name='Path 2' d='M65.43 9.827a2.472 2.472 0 0 1 2.472-2.472h10.712a4.12 4.12 0 0 1 1.476 7.965l-8.3 3.059a5.768 5.768 0 0 0-.468 10.723l15.53 7.049v-5.408l-13.585-6.007a.989.989 0 0 1 .08-1.838l8.514-2.962A9.064 9.064 0 0 0 78.614 2.41H67.903a7.416 7.416 0 0 0-7.416 7.416V35.37h4.944Z' fill='%23b1181e'/%3e%3cpath data-name='Rectangle 1' fill='%23b1181e' d='M92.668 2.412h4.945V35.37h-4.945z'/%3e%3cpath data-name='Path 3' d='m24.464 2.412-8.849 27.444a.824.824 0 0 1-1.566 0L5.2 2.412H0l9.346 28.972a5.768 5.768 0 0 0 10.971 0l9.346-28.972Z' fill='%23b1181e'/%3e%3cpath data-name='Path 4' d='m127.322 35.37 8.849-27.444a.824.824 0 0 1 1.567 0l8.85 27.445h5.2l-9.347-28.973a5.768 5.768 0 0 0-10.97 0l-9.346 28.973Z' fill='%23b1181e'/%3e%3cpath data-name='Path 5' d='M39.764 7.356h15.655V2.412H39.764a8.24 8.24 0 0 0-8.24 8.24v16.479a8.24 8.24 0 0 0 8.24 8.24h15.655v-4.944H39.764a3.3 3.3 0 0 1-3.3-3.3v-5.805h15.659V16.46H36.468v-5.808a3.3 3.3 0 0 1 3.296-3.296Z' fill='%23b1181e'/%3e%3cpath data-name='Path 6' d='M125.791 2.412h-24.059v4.944h9.559V35.37h4.943V7.356h9.557Z' fill='%23b1181e'/%3e%3cpath data-name='Path 7' d='M170.149 35.37a9.476 9.476 0 0 0 0-18.951h-8.24a4.532 4.532 0 1 1 0-9.064h16.067V2.412h-16.067a9.476 9.476 0 0 0 0 18.951h8.24a4.532 4.532 0 0 1 0 9.064h-16.068v4.944Z' fill='%23b1181e'/%3e%3cpath data-name='Path 8' d='M180.769 2.412h-.429V.4h-.716V0h1.866v.4h-.722Zm2.268-.59.152-.428.543-1.394h.5v2.412h-.408V1.233l.009-.412-.134.34-.482 1.251h-.358l-.483-1.251-.134-.34.009.412v1.179h-.412V0h.5l.545 1.394Z' fill='%23b1181e'/%3e%3c/svg%3e"
+      alt="Veritas Logo" class="img-fluid veritas-logo">
+    <h1 class="text-center" style="display: inline-block;"> NetBackup FlexScale Manager </h1>
+    <span class="text-left" style="margin-left: 80%;">
+      <input type="checkbox" id="developer-mode" onclick="updateForm(this);">
+      <label class="text-left" for="download">Developer mode</label> <br>
+    </span>
+  </header>
+  <form>
+    <div class="h-full grid"
+      style="grid-template-columns: 0.955224fr 10px 1.04478fr; grid-template-rows: 1.2521fr 10px 0.747899fr;">
+      <div>
+        <label for="env">
+          <h2>README</h2>
+          <ol>
+            <li>Select one or more action checkboxes on the left pane</li>
+            <li>Enter parameters related to selected actions in textboxes on the right pane</li>
+            <li>Specify any additional parameters in the textarea one per line in the format: <b
+                style="color: red;">Key=Value</b>
+            </li>
+            <li>View steps or start running</li>
+          </ol>
+        </label><br> </p>
+
+        <h2>Actions</h2>
+        <table class="table table-sm caption-top">
+          <caption>1. Select one or more action checkboxes...</caption>
+          <tr>
+            <!-- <th><h3>Actions</h3></th> -->
+          </tr>
+
+          <tr>
+            <td>
+              <h4>Download</h4>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="checkbox" id="download" name="workflow" value='{"action":"download"}'
+                onclick="updateForm(this);">
+              <label for="download"> Download ISO/RPM/file </label> <br>
+            </td>
+          </tr>
+
+          <div>
+            <tr id="dev-build-header" style="display:none">
+              <td>
+                <h4>Build</h4>
+              </td>
+            </tr>
+            <tr id="dev-code" style="display:none">
+              <td>
+                <input type="checkbox" id="code" name="workflow" value='{"action":"code"}' onclick="updateForm(this);">
+                <label for="code"> Update code </label><br>
+              </td>
+            </tr>
+
+            <tr id="dev-build-nas" style="display:none">
+              <td>
+                <input type="checkbox" id="build-nas" name="workflow" value='{"action":"build-nas"}'
+                  onclick="updateForm(this);">
+                <label for="build-nas"> Build VRTSnas RPM </label><br>
+              </td>
+            </tr>
+
+            <tr id="dev-build-update" style="display:none">
+              <td>
+                <input type="checkbox" id="build-rhel7-update" name="workflow" value='{"action":"build-rhel7-update"}'
+                  onclick="updateForm(this);">
+                <label for="build-rhel7-update"> Build Update RPM </label><br>
+              </td>
+            </tr>
+          </div>
+
+          <tr>
+            <td>
+              <h4>Configure</h4>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="checkbox" id="cluster-config" name="workflow" value='{"action":"cluster-config"}'
+                onclick="updateForm(this);">
+              <label for="cluster-config"> Configure Cluster </label><br>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="checkbox" id="replication" name="workflow" value='{"action":"replication"}'
+                onclick="updateForm(this);">
+              <label for="replication"> Configure Replication </label><br>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <h4>Upgrade</h4>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="checkbox" id="upload" name="workflow" value='{"action":"upload"}'
+                onclick="updateForm(this);">
+              <label for="upload"> Upload RPM</label><br>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="checkbox" id="upgrade-precheck" name="workflow" value='{"action":"upgrade-precheck"}'
+                onclick="updateForm(this);">
+              <label for="upgrade-precheck"> Precheck</label><br>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <input type="checkbox" id="upgrade" name="workflow" value='{"action":"upgrade"}'
+                onclick="updateForm(this);">
+              <label for="upgrade"> Upgrade </label><br>
+            </td>
+          </tr>
+
+        </table>
+
+        </fieldset>
+
+      </div>
+
+      <div class="gutter-col gutter-col-1" style="grid-column: 2;"></div>
+
+      <div>
+        <div class="mb-2">
+          <fieldset>
+            <div class="mb-4">
+              <h2 style="display: inline-block;">Parameters</h2>
+              <span class="text-left" style="margin-left: 35%;">
+                <input type="checkbox" id="my-default-values" onclick="loadMyDefaultValues(this);">
+                <label class="text-left" for="my-default-values">Load my default values</label> <br>
+              </span>
+              <i>2. Enter parameters for selected actions...</i>
+              <div id="download_url" style="display:none">
+                <label for="download_url_input">Download URL<span style="color: red">*</span>: </label>
+                <input type="text" class="form-control" id="download_url_input" name="DOWNLOAD_URL"
+                  placeholder="Link to the file to download" onchange="updateParameters(this)" />
+              </div>
+
+              <div id="branch_name" style="display:none">
+                <label for="branch_name_input">Git Branch<span style="color: red">*</span>: </label>
+                <input type="text" class="form-control" id="branch_name_input" name="GIT_BRANCH"
+                  placeholder="Name of the git branch" onchange="updateParameters(this)" />
+              </div>
+
+              <div id="builder" style="display:none">
+                <label for="builder_input">Build System<span style="color: red">*</span>: </label>
+                <input type="text" class="form-control" id="builder_input" name="BUILD_SYSTEM"
+                  placeholder="Name of the git branch" onchange="updateParameters(this)" />
+              </div>
+
+              <div id="cluster" style="display:none">
+                <label for="cluster_input"> Cluster: </label>
+                <input type="text" class="form-control" placeholder="Name of Cluster" id="cluster_input" name="CLUSTER"
+                  onchange="updateParameters(this)" />
+              </div>
+
+              <div id="dr_cluster" style="display:none">
+                <label for="dr_cluster_input"> DR Cluster: </label>
+                <input type="text" class="form-control" placeholder="Name of DR Cluster" id="dr_cluster_input"
+                  name="DR_CLUSTER" onchange="updateParameters(this)" />
+              </div>
+
+              <br>
+              <i>3. Enter any additional parameters below...</i>
+              <textarea id="env" name="env" rows="10" cols="80" placeholder="USERNAME=admin_user
+PASSWORD=password
+TEST_PLUGIN_EXIT_STATUS=1"></textarea>
+            </div>
+        </div>
+
+        <div class="mb-3">
+          <input type="text" name="library" id="library" class="form-control" hidden="true"
+            value="/storage/bin/library-rhel7" />
+        </div>
+
+        <div class="caption">
+          4. View steps or start running...
+        </div>
+        <button type="List" id="list-btn" hx-post="/list" hx-target="#build-response"
+          hx-swap="afterend show:#resp-status:top" hx-indicator="#list-spinner" class="btn btn-primary" disabled>
+          <span class="spinner-border spinner-border-sm htmx-indicator" id="list-spinner" role="status"
+            aria-hidden="true"></span>
+          Show Steps
+        </button>
+
+        <button type="Run" id="run-btn" hx-post="/run" hx-target="#build-response"
+          hx-swap="afterend show:#resp-status:top" hx-indicator="#run-spinner" class="btn btn-primary" disabled>
+          <span class="spinner-border spinner-border-sm htmx-indicator" id="run-spinner" role="status"
+            aria-hidden="true"></span>
+          Submit
+        </button>
+      </div>
+
+      <div class="gutter-row gutter-row-1" style="grid-row: 2;"></div>
+      <div></div>
+      <div id="build-response"></div>
+    </div>
+
+  </form>
+
+</body>
+
+</html>

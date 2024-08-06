@@ -1,0 +1,319 @@
+{
+    "cluster_setting": {
+        "name": "lagoscl02",
+        "storage": {
+            "format_disks": true,
+            "tag_disks": true
+        },
+        "autosupport_setting": {
+            "smtp": {
+                "notificationInterval": "",
+                "hardware": "",
+                "software": "",
+                "senderEmail": "",
+                "emailServer": "",
+                "account": "",
+                "password": "",
+                "serverPort": "",
+                "encryption_enabled": true
+            },
+            "snmp": {
+                "enable_snmp": false,
+                "server": "",
+                "port": "",
+                "community": ""
+            },
+            "call_home": {
+                "enable_call_home": true,
+                "enable_proxy_server": false,
+                "proxy": {
+                    "enable_proxy_tunel": false,
+                    "server": "",
+                    "port": "",
+                    "username": "",
+                    "password": ""
+                }
+            }
+        },
+        "console_ip_ipv6": "",
+        "console_ip_ipv4": "10.84.147.179",
+        "management_server_ip_ipv4": "10.84.150.172",
+        "management_server_ip_ipv6": "",
+        "ntp_setting": {
+            "timezone": "Los_Angeles",
+            "server": [
+                "172.16.8.12"
+            ]
+        },
+        "dr_passphrase": "P@ssw0rd@1234",
+        "license_key": "",
+        "storage_licenses": [],
+        "netbackup_master": {
+            "name": "lagoscl02mas.engba.veritas.com",
+            "ipv4_address": "10.84.151.180",
+            "ipv6_address": ""
+        },
+        "user_management": {
+            "users": [
+                {
+                    "user_name": "admin_user",
+                    "password": "P@ssw0rd@1234",
+                    "roles": [
+                        "appliance_admin",
+                        "backup_admin"
+                    ]
+                },
+                {
+                    "user_name": "app_admin_user",
+                    "password": "P@ssw0rd@1234",
+                    "roles": [
+                        "appliance_admin"
+                    ]
+                },
+                {
+                    "user_name": "nbu_admin_user",
+                    "password": "P@ssw0rd@1234",
+                    "roles": [
+                        "backup_admin"
+                    ]
+                }
+            ],
+            "storage_server": [
+                {
+                    "user_name": "root",
+                    "password": "P@ssw0rd@1234"
+                }
+            ],
+            "additional_users": [
+                {
+                    "user_name": "maintenance",
+                    "password": "P@ssw0rd@1234"
+                }
+            ]
+        },
+        "private_network": {
+            "ipv4": {
+                "ip": "172.20.0.1",
+                "subnet": "255.252.0.0"
+            },
+            "ipv6": {
+                "ip": "fd00::2",
+                "prefix_length": "112"
+            }
+        },
+        "additional_fqdn_entries": [],
+        "lockdown_mode": {
+            "mode": "Normal",
+            "retention": {
+                "min": "",
+                "max": "",
+                "unit": ""
+            }
+        },
+        "management_server_fqdn": "lagoscl02mgmt.engba.veritas.com"
+    },
+    "common_network_setting": {
+        "dns": {
+            "dns_domain": "engba.veritas.com"
+        },
+        "data": {
+            "bond": {
+                "enable": false,
+                "mode": "",
+                "option": ""
+            },
+            "vlan_id": "",
+            "ipv4": {
+                "gateway_ip": "10.84.144.1",
+                "subnet_mask": "255.255.248.0"
+            },
+            "ipv6": {
+                "prefix_length": "",
+                "router_ip": ""
+            },
+            "dns": {
+                "dns_server": "172.16.8.12",
+                "search_domain": [
+                    "engba.veritas.com"
+                ],
+                "enable": true
+            }
+        },
+        "management": {
+            "vlan_id": "",
+            "ipv4": {
+                "gateway_ip": "10.84.144.1",
+                "subnet_mask": "255.255.248.0"
+            },
+            "ipv6": {
+                "prefix_length": "",
+                "router_ip": ""
+            },
+            "dns": {
+                "dns_server": "172.16.8.12",
+                "search_domain": [
+                    "engba.veritas.com"
+                ]
+            }
+        },
+        "ipmi": {
+            "ipv4": {
+                "gateway_ip": "",
+                "subnet_mask": ""
+            },
+            "ipv6": {
+                "prefix_length": "",
+                "router_ip": ""
+            }
+        },
+        "etc_hosts": {
+            "mandatory": {
+                "data": {
+                    "10.84.150.174": [
+                        "lagoscl02n01ms.engba.veritas.com"
+                    ],
+                    "10.84.150.175": [
+                        "lagoscl02n01ss.engba.veritas.com"
+                    ],
+                    "10.84.150.178": [
+                        "lagoscl02n02ms.engba.veritas.com"
+                    ],
+                    "10.84.150.179": [
+                        "lagoscl02n02ss.engba.veritas.com"
+                    ],
+                    "10.84.150.181": [
+                        "lagoscl02n03ms.engba.veritas.com"
+                    ],
+                    "10.84.150.182": [
+                        "lagoscl02n03ss.engba.veritas.com"
+                    ],
+                    "10.84.150.184": [
+                        "lagoscl02n04ms.engba.veritas.com"
+                    ],
+                    "10.84.150.188": [
+                        "lagoscl02n04ss.engba.veritas.com"
+                    ],
+                    "10.84.151.180": [
+                        "lagoscl02mas.engba.veritas.com"
+                    ]
+                },
+                "mgmt": {
+                    "10.84.150.173": [
+                        "lagoscl02n01.engba.veritas.com"
+                    ],
+                    "10.84.150.177": [
+                        "lagoscl02n02.engba.veritas.com"
+                    ],
+                    "10.84.150.180": [
+                        "lagoscl02n03.engba.veritas.com"
+                    ],
+                    "10.84.150.183": [
+                        "lagoscl02n04.engba.veritas.com"
+                    ],
+                    "10.84.150.172": [
+                        "lagoscl02mgmt.engba.veritas.com"
+                    ]
+                }
+            },
+            "optional": {}
+        }
+    },
+    "nodes_setting": [
+        {
+            "host_name": "lagoscl02-01",
+            "ipmi_interface": {
+                "ipv4_address": "",
+                "ipv6_address": ""
+            },
+            "management_interface": {
+                "name": "lagoscl02n01.engba.veritas.com",
+                "ipv4_address": "10.84.150.173",
+                "ipv6_address": ""
+            },
+            "media_server": {
+                "name": "lagoscl02n01ms.engba.veritas.com",
+                "ipv4_address": "10.84.150.174",
+                "ipv6_address": ""
+            },
+            "storage_server": {
+                "name": "lagoscl02n01ss.engba.veritas.com",
+                "ipv4_address": "10.84.150.175",
+                "ipv6_address": ""
+            },
+            "serial_number": "VMware-423555a8eb199e6b-a524407c689c7108",
+            "node_ip": "169.254.10.27"
+        },
+        {
+            "host_name": "lagoscl02-02",
+            "ipmi_interface": {
+                "ipv4_address": "",
+                "ipv6_address": ""
+            },
+            "management_interface": {
+                "name": "lagoscl02n02.engba.veritas.com",
+                "ipv4_address": "10.84.150.177",
+                "ipv6_address": ""
+            },
+            "media_server": {
+                "name": "lagoscl02n02ms.engba.veritas.com",
+                "ipv4_address": "10.84.150.178",
+                "ipv6_address": ""
+            },
+            "storage_server": {
+                "name": "lagoscl02n02ss.engba.veritas.com",
+                "ipv4_address": "10.84.150.179",
+                "ipv6_address": ""
+            },
+            "serial_number": "VMware-423565aac4cd4874-5c5362a31a8c3e70",
+            "node_ip": "169.254.7.212"
+        },
+        {
+            "host_name": "lagoscl02-03",
+            "ipmi_interface": {
+                "ipv4_address": "",
+                "ipv6_address": ""
+            },
+            "management_interface": {
+                "name": "lagoscl02n03.engba.veritas.com",
+                "ipv4_address": "10.84.150.180",
+                "ipv6_address": ""
+            },
+            "media_server": {
+                "name": "lagoscl02n03ms.engba.veritas.com",
+                "ipv4_address": "10.84.150.181",
+                "ipv6_address": ""
+            },
+            "storage_server": {
+                "name": "lagoscl02n03ss.engba.veritas.com",
+                "ipv4_address": "10.84.150.182",
+                "ipv6_address": ""
+            },
+            "serial_number": "VMware-42355f18a4ac854d-30dd6c6a4bd57585",
+            "node_ip": "169.254.9.17"
+        },
+        {
+            "host_name": "lagoscl02-04",
+            "ipmi_interface": {
+                "ipv4_address": "",
+                "ipv6_address": ""
+            },
+            "management_interface": {
+                "name": "lagoscl02n04.engba.veritas.com",
+                "ipv4_address": "10.84.150.183",
+                "ipv6_address": ""
+            },
+            "media_server": {
+                "name": "lagoscl02n04ms.engba.veritas.com",
+                "ipv4_address": "10.84.150.184",
+                "ipv6_address": ""
+            },
+            "storage_server": {
+                "name": "lagoscl02n04ss.engba.veritas.com",
+                "ipv4_address": "10.84.150.188",
+                "ipv6_address": ""
+            },
+            "serial_number": "VMware-42357bc3d53e2c21-e2d8f1842a0c4d59",
+            "node_ip": "169.254.8.79"
+        }
+    ]
+}

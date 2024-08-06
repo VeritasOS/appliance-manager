@@ -1,0 +1,32 @@
+<div class="gutter-row gutter-row-3" style="grid-row: 4;"></div>
+
+<div id="resp-status">
+    <h2>Status</h2>
+    <hr>
+    <i>Click on the green or red blocks to view the logs...</i>
+    <br>
+    <!-- 
+        INFO: hx-target is `next`, so that when another response gets
+            prepended, the old triggers don't change new output getting
+            displayed.
+    -->
+    <div hx-get="{{.}}.svg" hx-trigger="load, every 5s" hx-target="next #image">
+    </div>
+    <div id="image" hx-boost="true" hx-target="log-area">
+        Getting status...
+    </div>
+</div>
+
+<div></div>
+
+<div>
+    <h2>Log</h2>
+    <hr>
+
+    <p><a href="{{.}}.log">{{.}}.log</a></p>
+    <div id="log-area">
+        <object data="{{.}}.log" type="text/plain" height="500" width="100%" http-equiv="refresh" content="5">
+            Gathering logs...
+        </object>
+    </div>
+</div>

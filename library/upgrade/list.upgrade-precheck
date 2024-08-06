@@ -1,0 +1,3 @@
+Description=Listing upgrade packages...
+ExecStart=$PM_LIBRARY/upgrade/list.sh
+Requires=upgrade/login.upgrade-precheck

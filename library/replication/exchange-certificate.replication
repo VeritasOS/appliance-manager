@@ -1,0 +1,5 @@
+Description=Exchanging certificates...
+Requires=replication/dr-token.replication
+Requires=replication/token.replication
+# RequiredBy=replication/configure.replication
+ExecStart=$PM_LIBRARY/replication/exchange-certificates.sh

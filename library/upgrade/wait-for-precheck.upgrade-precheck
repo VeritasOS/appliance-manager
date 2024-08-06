@@ -1,0 +1,5 @@
+Description=Waiting for precheck to complete...
+# ExecStart=/usr/bin/sleep 10m
+ExecStart=$PM_LIBRARY/task/wait.sh -c ${CLUSTER} -T ${CLUSTER}_UPGRADE_PRECHECK_TASK_ID -i 60 -w 600
+Requires=upgrade/precheck.upgrade-precheck
+#RequiredBy=upgrade/upgrade.upgrade-precheck

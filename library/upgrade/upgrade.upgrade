@@ -1,0 +1,3 @@
+Description=Running upgrade...
+ExecStart=$PM_LIBRARY/upgrade/upgrade.sh
+Requires=upgrade/list.upgrade
