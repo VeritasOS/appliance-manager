@@ -24,12 +24,20 @@ _get_cluster_token()
     local cluster=${1:?}
     # echo "Cluster: ${cluster}..."
 
-    username=$(jq -r .admin_user /home/abhijith/workspace/nbfs/dr-setup/config/3.1/variables-${cluster}.json)
-    password=$(jq -r .admin_password /home/abhijith/workspace/nbfs/dr-setup/config/3.1/variables-${cluster}.json)
-    mgmt_server=$(jq -r .cluster_setting.management_server.fqdn_name /home/abhijith/workspace/nbfs/dr-setup/config/3.1/variables-${cluster}.json)
-    if [ "${mgmt_server}" == "" ]; then
-        echo "Failed to get management server.";
-        exit 1;
+    if [ -f "/home/abhijith/workspace/nbfs/dr-setup/config/3.1/variables-${cluster}.json" ]; then
+        username=$(jq -r .admin_user /home/abhijith/workspace/nbfs/dr-setup/config/3.1/variables-${cluster}.json)
+        password=$(jq -r .admin_password /home/abhijith/workspace/nbfs/dr-setup/config/3.1/variables-${cluster}.json)
+        mgmt_server=$(jq -r .cluster_setting.management_server.fqdn_name /home/abhijith/workspace/nbfs/dr-setup/config/3.1/variables-${cluster}.json)
+        if [ "${mgmt_server}" == "" ]; then
+            echo "Failed to get management server.";
+            exit 1;
+        fi
+    else
+        # Assume that specified name is management server name.
+        default_password='P@ssw0rd@1234'
+        mgmt_server=${cluster};
+        username=${USER_NAME:-admin_user}
+        password=${PASSWORD:-${default_password}}
     fi
     mgmt_server_url=${mgmt_server}:14161
 

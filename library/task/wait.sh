@@ -46,7 +46,7 @@ while getopts 'hc:t:T:i:w:' OPTION; do
         total_wait_time=${OPTARG}
         ;;
     ?)
-        echo ${USAGE_STR}
+        usage
         exit 1
         ;;
     esac
