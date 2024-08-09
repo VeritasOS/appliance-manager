@@ -1,3 +1,0 @@
-Description="Removing builder..."
-ExecStart=/usr/bin/docker rm -f builder
-Requires=builder/stop.build

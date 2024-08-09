@@ -1,3 +1,0 @@
-Description=Getting DR token...
-RequiredBy=replication/exchange-certificate.replication
-ExecStart=$PM_LIBRARY/token/token.sh -c ${DR_CLUSTER} -f

@@ -1,3 +1,0 @@
-Description="Packaging sfnas..."
-ExecStart=$PM_LIBRARY/sfnas/package.sh
-Requires=sfnas/make.build-nas

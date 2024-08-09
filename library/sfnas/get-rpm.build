@@ -1,3 +1,0 @@
-Description="Transferring sfnas RPM..."
-ExecStart=$PM_LIBRARY/sfnas/get-nas-rpm.sh
-Requires=sfnas/package.build

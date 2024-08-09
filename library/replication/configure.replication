@@ -1,3 +1,0 @@
-Description=Configuring replication...
-ExecStart=$PM_LIBRARY/replication/configure.sh
-# Requires=replication/token.replication
