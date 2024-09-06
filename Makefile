@@ -8,7 +8,7 @@ help: ## Display this help message.
 TOP=$(CURDIR)
 include $(TOP)/Makefile.conf
 
-.SILENT:
+# .SILENT:
 
 .PHONY: all
 all: clean start-server
@@ -17,11 +17,14 @@ all: clean start-server
 clean:	 		## Clean log files.
 	@echo "Cleaning log files...";
 	-@rm $(TOP)/{,.}*{dot,log,svg};
-	-@rm -rf $(TOP)/plugins/
+	-@rm -rf $(TOP)/plugins;
+	-@rm -rf plugin-manager;
 
-.PHONY: start-server
-start-server: 	## Start Appliance Manager server
-	git clone https://github.com/VeritasOS/plugin-manager.git;
+.PHONY: get-pm
+get-pm: 	## Get Plugin Manager
+	if [ ! -d "./plugin-manager/" ]; then \
+		git clone https://github.com/VeritasOS/plugin-manager.git; \
+	fi
 	cd plugin-manager; \
 	git checkout v2; \
 	make build; \
@@ -30,6 +33,16 @@ start-server: 	## Start Appliance Manager server
 		echo "Failed to build Plugin Manager (pm). Return: $${d}."; \
 		exit 1; \
 	fi ;
+
+
+.PHONY: start-server
+start-server: 	## Start Appliance Manager server
+	if [ ! -d "plugin-manager" ]; then \
+		echo "Directory not present..."; \
+		make get-pm; \
+	else \
+		git pull -r; \
+	fi
 	echo "Starting Plugin Manager server...";
 	./plugin-manager/bin/pm server -port 8081
 

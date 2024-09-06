@@ -10,6 +10,12 @@ An utility aimed at managing NBFS appliance using published NBFS REST APIs and [
 
 ## Setup Instruction
 
+1. Get plugin manager `make get-pm`.
+2. Start appliance-manager server `make start-server`.
+3. Open browser `http://{host}:8081`
+
+> Old instructions
+
 Setting up Appliance Manager involves following steps:
 
 1. Get latest version of [Plugin Manager v2](https://github.com/VeritasOS/plugin-manager/tree/v2), and check out v2 branch. Build by running `make build` inside `plugin-manager` to get `pm` binary.
