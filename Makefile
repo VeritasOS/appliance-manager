@@ -18,20 +18,14 @@ clean:	 		## Clean log files.
 	-@rm -rf plugin-manager;
 
 .PHONY: setup
-setup: install_build_deps get-pm
-
-.PHONY: install_build_deps
-install_build_deps:
-	echo "A" | make -C plugin-manager install-proto-deps
-
-.PHONY: get-pm
-get-pm: 	## Get Plugin Manager
+setup: 	## Install dependencies and build Plugin Manager
 	if [ ! -d "./plugin-manager/" ]; then \
 		git clone https://github.com/VeritasOS/plugin-manager.git; \
 	fi
 	cd plugin-manager; \
-	git checkout v2; \
-	make build; \
+	git checkout v2;
+	echo "A" | make -C plugin-manager install-proto-deps
+	make -C plugin-manager build; \
 	ret=$$?; \
 	if [ $${ret} -ne 0 ]; then \
 		echo "Failed to build Plugin Manager (pm). Return: $${d}."; \
