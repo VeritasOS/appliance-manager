@@ -10,15 +10,19 @@ include $(TOP)/Makefile.conf
 
 # .SILENT:
 
-.PHONY: all
-all: clean start-server
-
 .PHONY: clean
 clean:	 		## Clean log files.
 	@echo "Cleaning log files...";
 	-@rm $(TOP)/{,.}*{dot,log,svg};
 	-@rm -rf $(TOP)/plugins;
 	-@rm -rf plugin-manager;
+
+.PHONY: setup
+setup: install_build_deps get-pm
+
+.PHONY: install_build_deps
+install_build_deps:
+	echo "A" | make -C plugin-manager install-proto-deps
 
 .PHONY: get-pm
 get-pm: 	## Get Plugin Manager
@@ -33,7 +37,6 @@ get-pm: 	## Get Plugin Manager
 		echo "Failed to build Plugin Manager (pm). Return: $${d}."; \
 		exit 1; \
 	fi ;
-
 
 .PHONY: start-server
 start-server: 	## Start Appliance Manager server

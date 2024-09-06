@@ -10,11 +10,12 @@ An utility aimed at managing NBFS appliance using published NBFS REST APIs and [
 
 ## Setup Instruction
 
-1. Get plugin manager `make get-pm`.
-2. Start appliance-manager server `make start-server`.
-3. Open browser `http://{host}:8081`
+1. Get plugin manager code `make setup`.
+2. Install dependencies `make install-proto-deps`.
+3. Start appliance-manager server `make start-server`.
+4. Open browser `http://{host}:8081`
 
-> Old instructions
+> Manual instructions (i.e., without using make)
 
 Setting up Appliance Manager involves following steps:
 
