@@ -37,7 +37,7 @@ setup: 	## Install dependencies and build Plugin Manager
 start-server: 	## Start Appliance Manager server
 	if [ ! -d "plugin-manager" ]; then \
 		echo "Directory not present..."; \
-		make get-pm; \
+		make setup; \
 	fi
 	echo "Starting Plugin Manager server...";
 	./plugin-manager/bin/pm server -port 8081
