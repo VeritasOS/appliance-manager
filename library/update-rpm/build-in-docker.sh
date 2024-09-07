@@ -4,7 +4,8 @@ myDir=$(dirname $0)
 
 set -x;
 
-ARTIFACTS_PATH=/storage/logs/artifacts
+# ARTIFACTS_PATH=/storage/logs/artifacts
+. $(dirname $0)/../store/store.sh
 ENV_FILE=${ARTIFACTS_PATH}/env
 PARAMS_FILE=${ARTIFACTS_PATH}/params.txt
 

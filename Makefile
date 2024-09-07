@@ -23,7 +23,8 @@ setup: 	## Install dependencies and build Plugin Manager
 		git clone https://github.com/VeritasOS/plugin-manager.git; \
 	fi
 	cd plugin-manager; \
-	git checkout v2;
+	git checkout v2; \
+	git pull -r;
 	echo "A" | make -C plugin-manager install-proto-deps
 	make -C plugin-manager build; \
 	ret=$$?; \
@@ -37,8 +38,6 @@ start-server: 	## Start Appliance Manager server
 	if [ ! -d "plugin-manager" ]; then \
 		echo "Directory not present..."; \
 		make get-pm; \
-	else \
-		git pull -r; \
 	fi
 	echo "Starting Plugin Manager server...";
 	./plugin-manager/bin/pm server -port 8081

@@ -1,9 +1,9 @@
 #!/bin/bash
-. $(dirname $0)/../store/store.sh
 
 set -x;
 
-ARTIFACTS_PATH=/storage/logs/artifacts
+. $(dirname $0)/../store/store.sh
+# ARTIFACTS_PATH=/storage/logs/artifacts
 UPGRADE_PARAMS_FILE=${ARTIFACTS_PATH}/upgrade-params.json
 
 upgrade()

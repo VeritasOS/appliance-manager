@@ -2,7 +2,8 @@
 
 set -x;
 
-ARTIFACTS_PATH=/storage/logs/artifacts
+# ARTIFACTS_PATH=/storage/logs/artifacts
+. $(dirname $0)/../store/store.sh
 ENV_FILE=${ARTIFACTS_PATH}/env
 
 . ${ENV_FILE}

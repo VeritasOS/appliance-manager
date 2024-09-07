@@ -1,6 +1,6 @@
 #!/bin/bash
 set -x;
-ARTIFACTS_PATH=${ARTIFACTS_PATH:-/storage/logs/artifacts}
+ARTIFACTS_PATH=${ARTIFACTS_PATH:-~/storage/logs/artifacts}
 readonly STORE_FILE=${ARTIFACTS_PATH}/store
 
 # get_key_value_from_store()
