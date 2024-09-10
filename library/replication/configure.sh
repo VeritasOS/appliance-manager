@@ -88,9 +88,8 @@ EOF
         -H 'accept: application/json' \
         -H "Authorization: Bearer ${auth_token}" \
         -d "${replication_params}" \
-        --insecure \
+        --fail --insecure \
         https://${mgmt_server_url}/api/appliance/v1.0/disaster-recovery)
-
     ret=$?
     if [ ${ret} -ne 0 ]; then
         echo "Failed to configure replication."
@@ -98,6 +97,17 @@ EOF
     fi
     task_id=$(echo $resp | jq -r '.taskId')
     if [ "${task_id}" == "null" ]; then
+        echo "Failed to get task id of replication operation."
+        exit 1
+    fi
+
+    curl -X GET --cookie ${cookie_file} \
+        -H 'accept: application/json' \
+        -H "Authorization: Bearer ${auth_token}" \
+        --fail --insecure \
+        https://${mgmt_server_url}/api/appliance/v1.0/disaster-recovery
+    ret=$?
+    if [ ${ret} -ne 0 ]; then
         echo "Failed to configure replication."
         exit 1
     fi
@@ -105,14 +115,13 @@ EOF
     curl -X GET --cookie ${cookie_file} \
         -H 'accept: application/json' \
         -H "Authorization: Bearer ${auth_token}" \
-        --insecure \
-        https://${mgmt_server_url}/api/appliance/v1.0/disaster-recovery
-
-    curl -X GET --cookie ${cookie_file} \
-        -H 'accept: application/json' \
-        -H "Authorization: Bearer ${auth_token}" \
-        --insecure \
+        --fail --insecure \
         https://${mgmt_server_url}/api/appliance/v1.0/tasks/${task_id}
+    ret=$?
+    if [ ${ret} -ne 0 ]; then
+        echo "Failed to get task ${task_id} info.";
+	    exit 1;
+    fi
 }
 
 configure

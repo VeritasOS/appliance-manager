@@ -35,7 +35,7 @@ upgrade()
         -H 'accept: application/json' \
         -H "Authorization: Bearer ${auth_token}" \
         -d "${upgrade_params}" \
-        --insecure \
+        --fail --insecure \
         https://${mgmt_server_url}/api/v1.0/upgrade/patches/${upgrade_rpm_name})
     ret=$?
     if [ ${ret} -ne 0 ]; then

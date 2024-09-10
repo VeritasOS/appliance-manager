@@ -19,6 +19,7 @@ wait_for_configure() {
         resp=$(curl -X GET --cookie ${node_cookie_file} \
             -H 'accept: application/json' \
             -H "Authorization: Bearer ${node_auth_token}" \
+            --fail \
             --insecure \
             https://${first_node_url}/api/v1.0/ui/appliance/cpitasks)
 

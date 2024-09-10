@@ -16,7 +16,7 @@ precheck()
     resp=$(curl -X POST --cookie ${cookie_file} \
         -H 'accept: application/json' \
         -H "Authorization: Bearer ${auth_token}" \
-        --insecure \
+        --fail --insecure \
         https://${mgmt_server_url}/api/appliance/v1.0/upgrade/${upgrade_rpm_name}/pre-check)
     ret=$?
     if [ ${ret} -ne 0 ]; then

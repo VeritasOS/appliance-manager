@@ -15,4 +15,4 @@ curl -X POST \
   -H 'accept: application/json' \
   -H 'Content-Type: multipart/form-data' \
   -F "upFile=@${upgrade_rpm_path}" \
-  --insecure
+  --fail --insecure

@@ -14,7 +14,7 @@ list()
     resp=$(curl -X GET --cookie ${cookie_file} \
         -H 'accept: application/json' \
         -H "Authorization: Bearer ${auth_token}" \
-        --insecure \
+        --fail --insecure \
         https://${mgmt_server_url}/api/appliance/v1.0/upgrade/patches/${upgrade_rpm_name})
     ret=$?
     if [ ${ret} -ne 0 ]; then

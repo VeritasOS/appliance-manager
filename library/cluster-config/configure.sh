@@ -57,7 +57,7 @@ configure()
         -H 'accept: application/json' \
         -H "Authorization: Bearer ${node_auth_token}" \
         -d '{"username":"root", "password":"P@ssw0rd"}' \
-        --insecure \
+        --fail --insecure \
         https://${first_node_url}/api/v1.0/ui/appliance/rescan)
     ret=$?
     if [ ${ret} -ne 0 ]; then
@@ -69,9 +69,8 @@ configure()
         -H 'accept: application/json' \
         -H "Authorization: Bearer ${node_auth_token}" \
         -d "@${cluster_config_params_file_path}" \
-        --insecure \
+        --fail --insecure \
         https://${first_node_url}/api/v1.0/ui/appliance/cluster)
-
     ret=$?
     if [ ${ret} -ne 0 ]; then
         echo "Failed to trigger cluster configuration.";

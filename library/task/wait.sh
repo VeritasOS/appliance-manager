@@ -70,7 +70,12 @@ while [ ${wait_time} -gt 0 ]; do
         -H 'accept: application/json' \
         -H "Authorization: Bearer ${auth_token}" \
         --insecure \
-        https://${mgmt_server_url}/api/appliance/v1.0/tasks/${task_id})
+        https://${mgmt_server_url}/api/appliance/v1.0/tasks/${task_id} --fail)
+    ret=$?
+    if [ ${ret} -ne 0 ]; then
+        echo "Failed to get task ${task_id} info.";
+	    exit 1;
+    fi
     state=$(echo $resp | jq -r .data.attributes.state)
     if [ "${state}" == "SUCCESS" ]; then
         echo "Task completed successfully."

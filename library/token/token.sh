@@ -45,7 +45,7 @@ _get_cluster_token()
     -d "username=${username}&password=${password}" https://${mgmt_server_url}/api/rest/authenticate \
     -H 'accept: application/json' \
     -H 'Content-Type: application/x-www-form-urlencoded' \
-    --insecure > ${TOKEN_FILE}
+    --fail --insecure > ${TOKEN_FILE}
     ret=$?
     if [ ${ret} -ne 0 ]; then
         echo "Failed to get token.";
@@ -83,7 +83,7 @@ _get_node_token_of_cluster()
     -d "username=${username}&password=${password}" https://${node_url}/api/rest/authenticate \
     -H 'accept: application/json' \
     -H 'Content-Type: application/x-www-form-urlencoded' \
-    --insecure > ${token_file}
+    --fail --insecure > ${token_file}
     ret=$?
     if [ ${ret} -ne 0 ]; then
         echo "Failed to get token.";

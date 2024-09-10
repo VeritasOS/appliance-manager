@@ -30,7 +30,7 @@ _get_node_token()
     -d "username=${default_user}&password=${default_password}" https://${FIRST_NODE}/api/rest/authenticate \
     -H 'accept: application/json' \
     -H 'Content-Type: application/x-www-form-urlencoded' \
-    --insecure > ${NODE_TOKEN_FILE}
+    --fail --insecure > ${NODE_TOKEN_FILE}
     ret=$?
     if [ ${ret} -ne 0 ]; then
         echo "Failed to get token.";
