@@ -1,11 +1,10 @@
 #!/bin/bash
-
 set -x;
 
 
 myDir=$(dirname $0)
 # echo "My location: $myDir"
-ARTIFACTS_PATH=/storage/logs/artifacts
+. $(dirname $0)/../store/store.sh
 PARAMS_FILE=${ARTIFACTS_PATH}/params.txt
 
 NODE_COOKIE_FILE=${ARTIFACTS_PATH}/node-cookie.txt
@@ -15,7 +14,7 @@ NODE_TOKEN_FILE=${ARTIFACTS_PATH}/node-token
 _get_node_token()
 {
     # https://lagoscl02n01.engba.veritas.com:8443/login
-    # curl -X POST --cookie-jar /storage/logs/artifacts/node-cookie.txt -d 'username=root&password=P@ssw0rd' https://lagoscl02n01.engba.veritas.com:8443/login -H 'accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' --insecure
+    # curl -X POST --cookie-jar ${ARTIFACTS_PATH}/node-cookie.txt -d 'username=root&password=P@ssw0rd' https://lagoscl02n01.engba.veritas.com:8443/login -H 'accept: application/json' -H 'Content-Type: application/x-www-form-urlencoded' --insecure
 
 
     PM_LIBRARY=${PM_LIBRARY:-"$myDir/.."}

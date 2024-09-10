@@ -39,7 +39,7 @@ _get_cluster_token()
         username=${USER_NAME:-admin_user}
         password=${PASSWORD:-${default_password}}
     fi
-    mgmt_server_url=${mgmt_server}:14161
+    mgmt_server_url=$(get_management_server_url ${CLUSTER})
 
     curl -X 'POST' --cookie-jar ${COOKIE_FILE} \
     -d "username=${username}&password=${password}" https://${mgmt_server_url}/api/rest/authenticate \

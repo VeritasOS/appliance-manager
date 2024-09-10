@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ARTIFACTS_PATH=/storage/logs/artifacts
+. $(dirname $0)/../store/store.sh
 ENV_FILE=${ARTIFACTS_PATH}/env
 
 if [ -f ${ENV_FILE} ]; then

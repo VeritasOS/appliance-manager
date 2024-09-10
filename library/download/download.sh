@@ -3,7 +3,7 @@
 
 package_type=${PACKAGE_TYPE:-"UPGRADE_RPM"}
 download_url=${DOWNLOAD_URL:?}
-download_dir=${DOWNLOAD_DIR:-/storage/logs/artifacts/downloads}
+download_dir=${DOWNLOAD_DIR:-${ARTIFACTS_PATH}/downloads}
 
 file_name=$(basename ${download_url})
 target_file_path=${download_dir}/${file_name}

@@ -3,13 +3,7 @@
 
 precheck()
 {
-    mgmt_server=$(jq -r .cluster_setting.management_server.fqdn_name /home/abhijith/workspace/nbfs/dr-setup/config/3.1/variables-${CLUSTER}.json)
-    if [ "${mgmt_server}" == "" ]; then
-        echo "Failed to get management server."
-        exit 1
-    fi
-    mgmt_server_url=${mgmt_server}:14161
-
+    mgmt_server_url=$(get_management_server_url ${CLUSTER})
     auth_token=$(get_cluster_auth_token)
     cookie_file=$(get_cluster_cookie_file)
     key="UPGRADE_RPM"

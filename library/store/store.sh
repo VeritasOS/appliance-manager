@@ -3,6 +3,11 @@ set -x;
 ARTIFACTS_PATH=${ARTIFACTS_PATH:-~/storage/logs/artifacts}
 readonly STORE_FILE=${ARTIFACTS_PATH}/store
 
+if [ ! -d ${ARTIFACTS_PATH} ]; then
+    echo "Creating ${ARTIFACTS_PATH}...";
+    mkdir -p ${ARTIFACTS_PATH};
+fi
+
 # get_key_value_from_store()
 #   Gets specified key's value from store.
 get_key_value_from_store() {
@@ -82,3 +87,25 @@ get_dr_cluster_cookie_file() {
 }
 
 
+#################### CLUSTER / mgmt server ####################
+get_management_server_url() {
+    local cluster=${1:?}
+    # TODO: Update/duplicate this to create other helper funcs, and clean up this one.
+    if [ -f "/home/abhijith/workspace/nbfs/dr-setup/config/3.1/variables-${cluster}.json" ]; then
+        username=$(jq -r .admin_user /home/abhijith/workspace/nbfs/dr-setup/config/3.1/variables-${cluster}.json)
+        password=$(jq -r .admin_password /home/abhijith/workspace/nbfs/dr-setup/config/3.1/variables-${cluster}.json)
+        mgmt_server=$(jq -r .cluster_setting.management_server.fqdn_name /home/abhijith/workspace/nbfs/dr-setup/config/3.1/variables-${cluster}.json)
+        if [ "${mgmt_server}" == "" ]; then
+            # echo "Failed to get management server.";
+            # exit 1;
+            echo ""
+        fi
+    else
+        # Assume that specified name is management server name.
+        default_password='P@ssw0rd@1234'
+        mgmt_server=${cluster};
+        username=${USER_NAME:-admin_user}
+        password=${PASSWORD:-${default_password}}
+    fi
+    echo ${mgmt_server}:14161
+}
