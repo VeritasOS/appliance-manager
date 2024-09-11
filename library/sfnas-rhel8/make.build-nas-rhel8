@@ -1,0 +1,2 @@
+Description="Building sfnas-rhel8..."
+ExecStart=$PM_LIBRARY/sfnas-rhel8/build.sh

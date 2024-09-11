@@ -27,7 +27,7 @@ function loadMyDefaultValues(checkedElement) {
     checked = isChecked(input)
 
     var default_values = {
-        'download_url_input': "https://artifactory-appliance.engba.veritas.com:443/artifactory/archive/GA/nbfs/3.2/3.2-20240316224905/post_release_3.2-20240317003218/3.2-1/VRTSnbfs_app_update-3.2-20240316224905.x86_64.rpm",
+        'download_url_input': "https://artifactory-appliance.engba.veritas.com/artifactory/release/nbfs/rhel8/3.5-20240909201104/post_release_3.5-20240909235725/3.5-1/VRTSnbfs_app_update-3.5-1.x86_64.rpm",
         'cluster_input': "capetowncl02",
         'dr_cluster_input': "lagoscl02",
     }
@@ -59,10 +59,12 @@ function updateForm(checkedElement) {
         ],
         //  Build related
         'branch_name': [
+            'build-nas-rhel8',
             'build-nas',
             'code'
         ],
         'builder': [
+            'build-nas-rhel8',
             'build-nas',
             'build-rhel7-update',
             'code'

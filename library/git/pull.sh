@@ -4,7 +4,7 @@ set -x;
 
 ssh_user=${SSH_USER:-abhijith}
 builder=${BUILD_SYSTEM:-vapundevrhel7bld.vxindia.veritas.com}
-workspace=${WORKSPACE:-/lhome/${ssh_user}/workspace/sfnas/}
+workspace=${WORKSPACE:-'~/workspace/sfnas'}
 
 ssh_builder="ssh ${ssh_user}@${builder}"
 

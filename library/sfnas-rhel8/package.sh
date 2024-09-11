@@ -2,13 +2,14 @@
 
 set -x;
 
+
 ssh_user=${SSH_USER:-abhijith}
-builder=${BUILD_SYSTEM:-vapundevrhel7bld.vxindia.veritas.com}
+builder=${BUILD_SYSTEM:-vapundevrh8bld8.vxindia.veritas.com}
 workspace=${WORKSPACE:-'~/workspace/sfnas'}
 
 ssh_builder="ssh ${ssh_user}@${builder}"
 
-build_area="${workspace}/build-rhel7"
+build_area="${workspace}/rhel8"
 
 echo "Build dir contents before running make package..."
 ${ssh_builder} "ls -lrt ${build_area}"

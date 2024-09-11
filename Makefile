@@ -40,6 +40,7 @@ start-server: 	## Start Appliance Manager server
 		make setup; \
 	fi
 	echo "Starting Plugin Manager server...";
+	echo "PM_WEB=${PM_WEB}"
 	./plugin-manager/bin/pm server -port 8081
 
 

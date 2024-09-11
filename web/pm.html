@@ -141,9 +141,17 @@
 
             <tr id="dev-build-nas" style="display:none">
               <td>
-                <input type="checkbox" id="build-nas" name="workflow" value='{"action":"build-nas"}'
+                <p>
+                Build VRTSnas RPM 
+                </p>
+                
+                &ensp;<input type="checkbox" id="build-nas" name="workflow" value='{"action":"build-nas"}'
                   onclick="updateForm(this);">
-                <label for="build-nas"> Build VRTSnas RPM </label><br>
+                <label for="build-nas"> RHEL7 </label><br>
+
+                &ensp;<input type="checkbox" id="build-nas-rhel8" name="workflow" value='{"action":"build-nas-rhel8"}'
+                  onclick="updateForm(this);">
+                <label for="build-nas-rhel8"> RHEL8 </label><br>
               </td>
             </tr>
 
@@ -241,7 +249,7 @@
               <div id="builder" style="display:none">
                 <label for="builder_input">Build System<span style="color: red">*</span>: </label>
                 <input type="text" class="form-control" id="builder_input" name="BUILD_SYSTEM"
-                  placeholder="Name of the git branch" onchange="updateParameters(this)" />
+                  placeholder="Name of the build system" onchange="updateParameters(this)" />
               </div>
 
               <div id="cluster" style="display:none">
