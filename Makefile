@@ -8,6 +8,8 @@ help: ## Display this help message.
 TOP=$(CURDIR)
 include $(TOP)/Makefile.conf
 
+LOG_DIR=./log
+
 # .SILENT:
 
 .PHONY: clean
@@ -15,8 +17,11 @@ clean:	 		## Clean log files.
 	@echo "Cleaning log files...";
 	-@rm $(TOP)/{,.}*{dot,log,svg};
 	-@rm -rf $(TOP)/plugins;
-	-@rm -rf plugin-manager;
+	-@rm -rf ${LOG_DIR};
 
+.PHONY: unsetup
+unsetup: 	## Remove Plugin Manager
+	-@rm -rf plugin-manager;
 .PHONY: setup
 setup: 	## Install dependencies and build Plugin Manager
 	if [ ! -d "./plugin-manager/" ]; then \
@@ -39,9 +44,11 @@ start-server: 	## Start Appliance Manager server
 		echo "Directory not present..."; \
 		make setup; \
 	fi
+	mkdir -p ${LOG_DIR} || (echo "Failed to create ${LOG_DIR}"; exit 1);
+
 	echo "Starting Plugin Manager server...";
-	echo "PM_WEB=${PM_WEB}"
-	./plugin-manager/bin/pm server -port 8081
+	echo "PM_WEB=${PM_WEB}";
+	./plugin-manager/bin/pm server -port 8081 -log-dir $(LOG_DIR)
 
 
 .NOTPARALLEL:
