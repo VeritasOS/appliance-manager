@@ -21,7 +21,7 @@ echo ""
 
 echo ""
 echo "Running make package for sfnas rhel7"
-${ssh_builder} "cd ${build_area}; make -j 1 VERBOSE=1 package" &> logs;
+${ssh_builder} "cd ${build_area}; make -j 1 VERBOSE=1 package";
 if [ $? -ne 0 ]; then
   echo "Failed to cmake sfnas"
   exit 1
