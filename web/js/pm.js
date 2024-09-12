@@ -72,8 +72,8 @@ function updateForm(checkedElement) {
 
         // Customer actions
         'cluster': [
-            'cluster-config',
-            'replication',
+            // 'cluster-config',
+            // 'replication',
             'upgrade',
             'upgrade-precheck',
             'upload'
@@ -81,9 +81,9 @@ function updateForm(checkedElement) {
         'download_url': [
             'download'
         ],
-        'dr_cluster': [
-            'replication'
-        ],
+        // 'dr_cluster': [
+        //     'replication'
+        // ],
     }
 
     enable_buttons = false
