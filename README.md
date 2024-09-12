@@ -12,7 +12,7 @@ An utility aimed at managing NBFS appliance using published NBFS REST APIs and [
 
 1. Get plugin manager code `make setup`.
 2. Install dependencies `make install-proto-deps`.
-3. Start appliance-manager server `make start-server`.
+3. Start appliance-manager server `make start`.
 4. Open browser `http://{host}:8081`
 
 > Manual instructions (i.e., without using make)

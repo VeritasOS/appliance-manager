@@ -38,8 +38,8 @@ setup: 	## Install dependencies and build Plugin Manager
 		exit 1; \
 	fi ;
 
-.PHONY: start-server
-start-server: 	## Start Appliance Manager server
+.PHONY: start
+start: 	## Start Appliance Manager server
 	if [ ! -d "plugin-manager" ]; then \
 		echo "Directory not present..."; \
 		make setup; \
