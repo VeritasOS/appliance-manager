@@ -104,7 +104,9 @@
             </li>
             <li>View steps or start running</li>
           </ol>
-        </label><br> </p>
+        </label>
+        <br>
+        <p></p>
 
         <h2>Actions</h2>
         <table class="table table-sm caption-top">
@@ -142,9 +144,9 @@
             <tr id="dev-build-nas" style="display:none">
               <td>
                 <p>
-                Build VRTSnas RPM 
+                  Build VRTSnas RPM
                 </p>
-                
+
                 &ensp;<input type="checkbox" id="build-nas" name="workflow" value='{"action":"build-nas"}'
                   onclick="updateForm(this);">
                 <label for="build-nas"> RHEL7 </label><br>
@@ -163,7 +165,7 @@
               </td>
             </tr>
           </div>
-<!-- 
+          <!-- 
           <tr>
             <td>
               <h4>Configure</h4>
@@ -217,23 +219,21 @@
           </tr>
 
         </table>
-
-        </fieldset>
-
       </div>
 
       <div class="gutter-col gutter-col-1" style="grid-column: 2;"></div>
 
       <div>
         <div class="mb-2">
-          <fieldset>
-            <div class="mb-4">
-              <h2 style="display: inline-block;">Parameters</h2>
-              <span class="text-left" style="margin-left: 35%;">
-                <input type="checkbox" id="my-default-values" onclick="loadMyDefaultValues(this);">
-                <label class="text-left" for="my-default-values">Load my default values</label> <br>
-              </span>
-              <i>2. Enter parameters for selected actions...</i>
+          <div class="mb-4">
+            <h2 style="display: inline-block;">Parameters</h2>
+            <span class="text-left" style="margin-left: 35%;">
+              <input type="checkbox" id="my-default-values" onclick="loadMyDefaultValues(this);">
+              <label class="text-left" for="my-default-values">Load my default values</label> <br>
+            </span>
+            <i>2. Enter parameters for selected actions...</i>
+            <fieldset>
+
               <div id="download_url" style="display:none">
                 <label for="download_url_input">Download URL<span style="color: red">*</span>: </label>
                 <input type="text" class="form-control" id="download_url_input" name="DOWNLOAD_URL"
@@ -254,8 +254,8 @@
 
               <div id="cluster" style="display:none">
                 <label for="cluster_input"> Cluster/Web Management Server: </label>
-                <input type="text" class="form-control" placeholder="Name of Cluster / Web Management Server" id="cluster_input" name="CLUSTER"
-                  onchange="updateParameters(this)" />
+                <input type="text" class="form-control" placeholder="Name of Cluster / Web Management Server"
+                  id="cluster_input" name="CLUSTER" onchange="updateParameters(this)" />
               </div>
 
               <div id="dr_cluster" style="display:none">
@@ -263,18 +263,18 @@
                 <input type="text" class="form-control" placeholder="Name of DR Cluster" id="dr_cluster_input"
                   name="DR_CLUSTER" onchange="updateParameters(this)" />
               </div>
+            </fieldset>
 
-              <br>
-              <i>3. Enter any additional parameters below...</i>
-              <textarea id="env" name="env" rows="10" cols="80" placeholder="USERNAME=admin_user
+            <br>
+            <i>3. Enter any additional parameters below...</i>
+            <textarea id="env" name="env" rows="10" cols="80" placeholder="USERNAME=admin_user
 PASSWORD=password
 TEST_PLUGIN_EXIT_STATUS=1"></textarea>
-            </div>
+          </div>
         </div>
 
         <div class="mb-3">
-          <input type="text" name="library" id="library" class="form-control" hidden="true"
-            value="./library" />
+          <input type="text" name="library" id="library" class="form-control" hidden="true" value="./library" />
         </div>
 
         <div class="caption">
