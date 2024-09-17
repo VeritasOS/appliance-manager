@@ -5,24 +5,26 @@ An utility aimed at managing NBFS appliance using published NBFS REST APIs and [
 > Table of Contents
 
 - [Appliance Manager](#appliance-manager)
-  - [Setup Instruction](#setup-instruction)
+  - [Setup Instructions](#setup-instructions)
+    - [Instructions with custom options](#instructions-with-custom-options)
   - [Appliance Manager UI](#appliance-manager-ui)
 
-## Setup Instruction
-
-1. Get plugin manager code `make setup`.
-2. Install dependencies `make install-proto-deps`.
-3. Start appliance-manager server `make start`.
-4. Open browser `http://{host}:8081`
-
-> Manual instructions (i.e., without using make)
+## Setup Instructions
 
 Setting up Appliance Manager involves following steps:
 
+1. Setup requirements to run appliance manager by running `make setup`.
+2. Start appliance-manager server `make start`.
+3. Open browser <http://{{host}}:8081>
+
+### Instructions with custom options
+
+If you would like use your own built custom UI, or specify appliance manager to run on a specific port, refer to below instructions:
+
 1. Get latest version of [Plugin Manager v2](https://github.com/VeritasOS/plugin-manager/tree/v2), and check out v2 branch. Build by running `make build` inside `plugin-manager` to get `pm` binary.
-1. Set `PM_WEB` environment variable to point to `web` directory.
+1. Set `PM_WEB` environment variable to point to your UI/web directory.
 1. Start Plugin Manager server: `pm server -port <port-number>`.
-1. Appliance Manager can now be accessed via `http://{{server}}:{{port-number}}/`.
+1. Appliance Manager can now be accessed via <http://{{server}}:{{port-number}}/>.
 
 ## Appliance Manager UI
 
