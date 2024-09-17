@@ -1,0 +1,3 @@
+Description=Running precheck...
+ExecStart=$PM_LIBRARY/upgrade/precheck.sh
+Requires=upgrade/list.upgrade-precheck

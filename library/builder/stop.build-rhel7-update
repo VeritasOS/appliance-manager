@@ -1,0 +1,3 @@
+Description="Stopping builder..."
+ExecStart=/usr/bin/docker stop builder
+Requires=update-rpm/rpm.build-rhel7-update

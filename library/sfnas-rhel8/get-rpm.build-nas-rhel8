@@ -1,0 +1,3 @@
+Description="Transferring sfnas-rhel8 RPM..."
+ExecStart=$PM_LIBRARY/sfnas-rhel8/get-nas-rpm.sh
+Requires=sfnas-rhel8/package.build-nas-rhel8

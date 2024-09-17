@@ -1,0 +1,4 @@
+Description=Waiting for exchange certificates task to complete on cluster...
+Requires=replication/exchange-certificate.replication
+RequiredBy=replication/configure.replication
+ExecStart=$PM_LIBRARY/task/wait.sh -c ${CLUSTER} -T ${DR_CLUSTER}_EXCHANGE_CERTIFICATES_TASK_ID -i 60 -w 600

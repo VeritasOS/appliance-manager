@@ -1,0 +1,3 @@
+Description="Packaging sfnas-rhel8..."
+ExecStart=$PM_LIBRARY/sfnas-rhel8/package.sh
+Requires=sfnas-rhel8/make.build-nas-rhel8
